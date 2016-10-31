@@ -26,7 +26,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //when btn is pressed picker is displayed
     @IBAction func stateButtonPressed(_ sender: Any) {
+        statePicker.isHidden = false
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -42,6 +45,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         component: Int) -> String? {
         return states[row]
     }
-
+    
+    //once state is selected title updates and picker is hidden
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        statePickerBtn.setTitle(states[row], for: UIControlState.normal)
+        statePicker.isHidden = true
+    }
 }
 
